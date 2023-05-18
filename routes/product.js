@@ -11,18 +11,24 @@ router.get("/", (req, res) => {
     const filteredData = productData.filter((element) => {
       return element.category === category && element.price >= minprice;
     });
-    res.json(filteredData);
+    // res.json(filteredData);
+    res.render('index', {data : filteredData})
   } else if (category) {
     const filteredData = productData.filter((element) => {
       return element.category === category;
     });
-    res.json(filteredData);
+    // res.json(filteredData);
+    res.render('index', {data : filteredData})
   } else if (minprice) {
     const filteredData = productData.filter((element) => {
       return element.price >= minprice;
     });
-    res.json(filteredData);
-  } else res.json(productData);
+    // res.json(filteredData);
+    res.render('index', {data : filteredData})
+  } else {
+    // res.json(productData);
+    res.render('index', {data : productData})
+  }
 
 });
 

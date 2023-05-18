@@ -6,9 +6,15 @@ const errorRouter = require('./routes/error')
 
 const app = express();
 
+//Set up view engine
+app.set('view engine', 'hbs')
+
+//Middleware for serving static files
+app.use(express.static(__dirname + '/public'))
+
 // Link the routes file
 app.use(homeRouter)
-app.use("/api/products", productRouter)
+app.use("/products", productRouter)
 app.use(errorRouter)
 
 app.listen(PORT, () => {
